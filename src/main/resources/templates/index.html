@@ -45,8 +45,8 @@
     <tbody>
     <tr th:each="viesti : ${messut}">
         <td th:text="${viestiStat.count}"></td>
-        <td th:text="${viesti.content}"></td>
-        <td th:text="${viesti.creationdate}"></td>
+        <td th:text="${viesti.name}"></td>
+        <td th:text="${viesti.description}"></td>
     </tr>
     </tbody>
 </table>
