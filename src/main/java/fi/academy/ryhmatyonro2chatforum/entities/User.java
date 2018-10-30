@@ -2,6 +2,9 @@ package fi.academy.ryhmatyonro2chatforum.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -11,6 +14,27 @@ public class User {
     private String favouriteTeam;
     private String userName;
 
+    @OneToMany(mappedBy = "user") //tarkastettu
+    private List<Message> msglist = new ArrayList<>();
+
+    @OneToMany(mappedBy = "topic") //tarkastettu
+    private List<Topic> topicList = new ArrayList<>();
+
+    public List<Topic> getTopicList() {
+        return topicList;
+    }
+
+    public void setTopicList(List<Topic> topicList) {
+        this.topicList = topicList;
+    }
+
+    public List<Message> getMsglist() {
+        return msglist;
+    }
+
+    public void setMsglist(List<Message> msglist) {
+        this.msglist = msglist;
+    }
 
     public Integer getId() {
         return id;

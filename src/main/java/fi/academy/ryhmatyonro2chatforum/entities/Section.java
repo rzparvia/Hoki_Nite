@@ -2,6 +2,9 @@ package fi.academy.ryhmatyonro2chatforum.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Section {
@@ -10,6 +13,16 @@ public class Section {
     private String name;
     private String description;
 
+    @OneToMany(mappedBy = "section") //tarkastettu
+    private List<Topic> topicList = new ArrayList<>();
+
+    public List<Topic> getTopicList() {
+        return topicList;
+    }
+
+    public void setTopicList(List<Topic> topicList) {
+        this.topicList = topicList;
+    }
 
     public Integer getId() {
         return id;

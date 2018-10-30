@@ -2,6 +2,8 @@ package fi.academy.ryhmatyonro2chatforum.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
@@ -13,6 +15,29 @@ public class Message {
     private String content;
     private Date creationdate;
 
+    @ManyToOne
+    @JoinColumn(name = "id_user") //tarkastettu
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "id_topic") //tarkastettu
+    private Topic topic;
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Integer getId() {
         return id;

@@ -1,8 +1,9 @@
 package fi.academy.ryhmatyonro2chatforum.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Topic {
@@ -14,6 +15,32 @@ public class Topic {
     private String content;
     private Date creationdate;
 
+    @OneToMany(mappedBy = "topic") //tarkastettu
+    private List<Message> msglist = new ArrayList<>();
+
+    @ManyToOne //tarkastettu
+    @JoinColumn(name = "id_sections")
+    private Section section;
+
+    @ManyToOne //tarkastettu
+    @JoinColumn(name = "id_user")
+    private User user;
+
+    public Section getSection() {
+        return section;
+    }
+
+    public void setSection(Section section) {
+        this.section = section;
+    }
+
+    public List<Message> getMsglist() {
+        return msglist;
+    }
+
+    public void setMsglist(List<Message> msglist) {
+        this.msglist = msglist;
+    }
 
     public Integer getId() {
         return id;
