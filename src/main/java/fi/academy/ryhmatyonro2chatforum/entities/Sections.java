@@ -7,21 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Section {
+public class Sections {
     @Id
     private Integer id;
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "section") //tarkastettu
-    private List<Topic> topicList = new ArrayList<>();
+    @OneToMany(mappedBy = "sections") //tarkastettu
+    private List<Topics> topicsList = new ArrayList<>();
 
-    public List<Topic> getTopicList() {
-        return topicList;
+    public List<Topics> getTopicsList() {
+        return topicsList;
     }
 
-    public void setTopicList(List<Topic> topicList) {
-        this.topicList = topicList;
+    public void setTopicsList(List<Topics> topicsList) {
+        this.topicsList = topicsList;
     }
 
     public Integer getId() {

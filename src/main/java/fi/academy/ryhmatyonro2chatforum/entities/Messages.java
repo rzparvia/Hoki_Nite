@@ -7,36 +7,34 @@ import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
-public class Message {
+public class Messages {
     @Id
     private Integer id;
-    private Integer idTopic; // foreign key
-    private Integer idUser; // foreign key
     private String content;
     private Date creationdate;
 
     @ManyToOne
-    @JoinColumn(name = "id_user") //tarkastettu
-    private User user;
+    @JoinColumn(name = "idUser") //tarkastettu
+    private Users users;
 
     @ManyToOne
-    @JoinColumn(name = "id_topic") //tarkastettu
-    private Topic topic;
+    @JoinColumn(name = "idTopic") //tarkastettu
+    private Topics topics;
 
-    public Topic getTopic() {
-        return topic;
+    public Topics getTopics() {
+        return topics;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
+    public void setTopics(Topics topics) {
+        this.topics = topics;
     }
 
-    public User getUser() {
-        return user;
+    public Users getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
     public Integer getId() {
@@ -45,22 +43,6 @@ public class Message {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdTopic() {
-        return idTopic;
-    }
-
-    public void setIdTopic(Integer idTopic) {
-        this.idTopic = idTopic;
-    }
-
-    public Integer getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
     }
 
     public String getContent() {

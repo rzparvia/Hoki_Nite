@@ -7,32 +7,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class User {
+public class Users {
 
     @Id
     private Integer id;
     private String favouriteTeam;
     private String userName;
 
-    @OneToMany(mappedBy = "user") //tarkastettu
-    private List<Message> msglist = new ArrayList<>();
+    @OneToMany(mappedBy = "users") //tarkastettu
+    private List<Messages> msglist = new ArrayList<>();
 
-    @OneToMany(mappedBy = "topic") //tarkastettu
-    private List<Topic> topicList = new ArrayList<>();
+    @OneToMany(mappedBy = "users") //tarkastettu
+    private List<Topics> topicsList = new ArrayList<>();
 
-    public List<Topic> getTopicList() {
-        return topicList;
+    public List<Topics> getTopicsList() {
+        return topicsList;
     }
 
-    public void setTopicList(List<Topic> topicList) {
-        this.topicList = topicList;
+    public void setTopicsList(List<Topics> topicsList) {
+        this.topicsList = topicsList;
     }
 
-    public List<Message> getMsglist() {
+    public List<Messages> getMsglist() {
         return msglist;
     }
 
-    public void setMsglist(List<Message> msglist) {
+    public void setMsglist(List<Messages> msglist) {
         this.msglist = msglist;
     }
 
