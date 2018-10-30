@@ -6,39 +6,45 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Topic {
+public class Topics {
     @Id
     private Integer id;
-    private Integer idUser;
-    private Integer idSections;
     private String title;
     private String content;
     private Date creationdate;
 
-    @OneToMany(mappedBy = "topic") //tarkastettu
-    private List<Message> msglist = new ArrayList<>();
+    @OneToMany(mappedBy = "topics") //tarkastettu2
+    private List<Messages> msglist = new ArrayList<>();
 
     @ManyToOne //tarkastettu
-    @JoinColumn(name = "id_sections")
-    private Section section;
+    @JoinColumn(name = "idSections")
+    private Sections sections;
 
     @ManyToOne //tarkastettu
-    @JoinColumn(name = "id_user")
-    private User user;
+    @JoinColumn(name = "idUser")
+    private Users users;
 
-    public Section getSection() {
-        return section;
+    public Users getUsers() {
+        return users;
     }
 
-    public void setSection(Section section) {
-        this.section = section;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
-    public List<Message> getMsglist() {
+    public Sections getSections() {
+        return sections;
+    }
+
+    public void setSections(Sections sections) {
+        this.sections = sections;
+    }
+
+    public List<Messages> getMsglist() {
         return msglist;
     }
 
-    public void setMsglist(List<Message> msglist) {
+    public void setMsglist(List<Messages> msglist) {
         this.msglist = msglist;
     }
 
@@ -50,23 +56,7 @@ public class Topic {
         this.id = id;
     }
 
-    public Integer getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
-    }
-
-    public Integer getIdSections() {
-        return idSections;
-    }
-
-    public void setIdSections(Integer idSections) {
-        this.idSections = idSections;
-    }
-
-    public String getTitle() {
+     public String getTitle() {
         return title;
     }
 

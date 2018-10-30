@@ -28,11 +28,29 @@
             <li><a href="#">Page 2</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-users"></span> Sign Up</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
     </div>
 </nav>
+
+<table th:align="center">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Viestit</th>
+        <th>Päivämäärä</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="viesti : ${messut}">
+        <td th:text="${viestiStat.count}"></td>
+        <td th:text="${viesti.content}"></td>
+        <td th:text="${viesti.creationdate}"></td>
+    </tr>
+    </tbody>
+</table>
+
 <div align="right" id="nhltwiitit">
 <a class="twitter-timeline" data-lang="fi" data-width="350" data-height="350" data-theme="dark" data-link-color="#FF6A00"
    href="https://twitter.com/NHL?ref_src=twsrc%5Etfw" data-chrome="nofooter noborders transparent noscrollbar"></a>
