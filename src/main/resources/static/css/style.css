@@ -1,3 +1,26 @@
-table {
-    color: yellow;
+body {
+     background-color: black;
+ }
+
+.navbar {
+    background-color: #FF6A00;
+    min-height: 80px;
+}
+
+.navbar-brand {
+    padding: 0 15px;
+    height: 80px;
+    line-height: 80px;
+    color: black;
+}
+
+.navbar-header {
+    color: black;
+}
+
+
+
+.twitter-timeline {
+    padding: 50px;
+    color: #FF6A00;
 }
