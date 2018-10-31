@@ -8,4 +8,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 
 public interface MessageRepo extends JpaRepository<Messages, String> {
+    List<Messages> findAllById(Integer id);
+    List<Messages> removeAllById(Integer id);
 }
