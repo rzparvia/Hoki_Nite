@@ -1,9 +1,6 @@
 package fi.academy.ryhmatyonro2chatforum.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,13 +10,17 @@ public class Messages {
     private String content;
     private Date creationdate;
 
-    @ManyToOne
-    @JoinColumn(name = "idUser") //tarkastettu
-    private Users users;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idusers") //OK
+    private Users users1;
 
-    @ManyToOne
-    @JoinColumn(name = "idTopic") //tarkastettu
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idtopics") //OK
     private Topics topics;
+
+
+    public Messages() {
+    }
 
     public Topics getTopics() {
         return topics;
@@ -29,12 +30,12 @@ public class Messages {
         this.topics = topics;
     }
 
-    public Users getUsers() {
-        return users;
+    public Users getUsers1() {
+        return users1;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers1(Users users1) {
+        this.users1 = users1;
     }
 
     public Integer getId() {

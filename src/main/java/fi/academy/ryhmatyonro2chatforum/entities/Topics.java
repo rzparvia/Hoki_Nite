@@ -1,5 +1,7 @@
 package fi.academy.ryhmatyonro2chatforum.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,39 +15,11 @@ public class Topics {
     private String content;
     private Date creationdate;
 
-    @OneToMany(mappedBy = "topics") //tarkastettu2
+    @OneToMany(mappedBy = "topics", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Messages> msglist = new ArrayList<>();
 
-    @ManyToOne //tarkastettu
-    @JoinColumn(name = "idSections")
-    private Sections sections;
-
-    @ManyToOne //tarkastettu
-    @JoinColumn(name = "idUser")
-    private Users users;
-
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setUsers(Users users) {
-        this.users = users;
-    }
-
-    public Sections getSections() {
-        return sections;
-    }
-
-    public void setSections(Sections sections) {
-        this.sections = sections;
-    }
-
-    public List<Messages> getMsglist() {
-        return msglist;
-    }
-
-    public void setMsglist(List<Messages> msglist) {
-        this.msglist = msglist;
+    public Topics() {
     }
 
     public Integer getId() {
@@ -56,7 +30,7 @@ public class Topics {
         this.id = id;
     }
 
-     public String getTitle() {
+    public String getTitle() {
         return title;
     }
 
@@ -78,5 +52,13 @@ public class Topics {
 
     public void setCreationdate(Date creationdate) {
         this.creationdate = creationdate;
+    }
+
+    public List<Messages> getMsglist() {
+        return msglist;
+    }
+
+    public void setMsglist(List<Messages> msglist) {
+        this.msglist = msglist;
     }
 }

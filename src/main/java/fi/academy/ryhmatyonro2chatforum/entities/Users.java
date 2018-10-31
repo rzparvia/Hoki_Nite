@@ -1,6 +1,9 @@
 package fi.academy.ryhmatyonro2chatforum.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -11,29 +14,21 @@ public class Users {
 
     @Id
     private Integer id;
-    private String favouriteTeam;
-    private String userName;
+    private String username;
 
-    @OneToMany(mappedBy = "users") //tarkastettu
+    @OneToMany(mappedBy = "users1", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Messages> msglist = new ArrayList<>();
 
-    @OneToMany(mappedBy = "users") //tarkastettu
-    private List<Topics> topicsList = new ArrayList<>();
-
-    public List<Topics> getTopicsList() {
-        return topicsList;
+    public String getUsername() {
+        return username;
     }
 
-    public void setTopicsList(List<Topics> topicsList) {
-        this.topicsList = topicsList;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public List<Messages> getMsglist() {
-        return msglist;
-    }
-
-    public void setMsglist(List<Messages> msglist) {
-        this.msglist = msglist;
+    public Users() {
     }
 
     public Integer getId() {
@@ -44,19 +39,11 @@ public class Users {
         this.id = id;
     }
 
-    public String getFavouriteTeam() {
-        return favouriteTeam;
+    public List<Messages> getMsglist() {
+        return msglist;
     }
 
-    public void setFavouriteTeam(String favouriteTeam) {
-        this.favouriteTeam = favouriteTeam;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setMsglist(List<Messages> msglist) {
+        this.msglist = msglist;
     }
 }
